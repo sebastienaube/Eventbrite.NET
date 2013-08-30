@@ -9,10 +9,12 @@ namespace EventbriteNET.Entities
         public long Id;
         public string Title;
         public string Description;
+        public string Url;
         public DateTime StartDateTime;
         public DateTime EndDateTime;
         public DateTime Created;
         public DateTime Modified;
+
 
         public Dictionary<long, Ticket> Tickets = new Dictionary<long, Ticket>();
 

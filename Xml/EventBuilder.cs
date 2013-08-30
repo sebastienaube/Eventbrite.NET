@@ -17,9 +17,12 @@ namespace EventbriteNET.Xml
             var doc = new XmlDocument();
             doc.LoadXml(xmlString);
 
+            System.IO.File.WriteAllText("C:\\temp\\log.xml", xmlString);
+
             toReturn.Id = long.Parse(doc.GetElementsByTagName("id")[0].InnerText);
             toReturn.Title = doc.GetElementsByTagName("title")[0].InnerText;
-            toReturn.Description = doc.GetElementsByTagName("description")[0].InnerText; ;
+            toReturn.Description = doc.GetElementsByTagName("description")[0].InnerText;
+            toReturn.Url = doc.SelectSingleNode("/event/url").InnerText;
             toReturn.StartDateTime = DateTime.Parse(doc.GetElementsByTagName("start_date")[0].InnerText);
             toReturn.EndDateTime = DateTime.Parse(doc.GetElementsByTagName("end_date")[0].InnerText);
             toReturn.Created = DateTime.Parse(doc.GetElementsByTagName("created")[0].InnerText);
